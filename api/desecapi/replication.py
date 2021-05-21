@@ -87,7 +87,8 @@ class Repository:
             self._git_do('commit', '-m', msg or 'update')
 
     def init(self):
-        self._git_do('init', '-b', 'main')
+        self._git_do('init')
+        self._git_do('checkout', '-q', '-b', 'main')
         for k, v in self._config.items():
             self._git_do('config', k, v)
 
